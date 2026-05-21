@@ -1,0 +1,15 @@
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        # If lengths are not equal then strings cannot be anagrams
+        if len(s) != len(t): return False
+
+        cnt = [0] * 26
+
+        for i in range(len(s)):
+            cnt[ord(s[i]) - ord('a')] += 1
+            cnt[ord(t[i]) - ord('a')] -= 1
+        
+        for val in cnt:
+            if val != 0: return False
+        return True
+       
